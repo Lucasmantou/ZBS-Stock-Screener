@@ -1,8 +1,8 @@
-# ZBS Stock Research
+# ZBS Stock Screener
 
-> 基于akshare的A股个股深度研究与智能选股系统
+> AI驱动的A股智能选股与深度分析系统
 >
-> 选股策略 → 智能筛选 → 深度分析 → 生成专业HTML研报
+> 自动筛选 → 多维评分 → 深度分析 → 生成专业HTML研报
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
@@ -57,7 +57,7 @@ python stock_screener.py --strategy all --top 5          # 全部策略
 ```
 
 AI会自动执行完整的三阶段流程：
-1. **Phase 1**：运行 `python zbs_collect.py 600519` 采集数据
+1. **Phase 1**：运行 `python stock_full_report.py 600519` 采集数据
 2. **Phase 2**：AI深度分析，生成MD报告
 3. **Phase 3**：AI手写HTML，生成可视化报告
 
@@ -70,7 +70,7 @@ AI会自动执行完整的三阶段流程：
 
 ```bash
 # 仅数据采集
-python zbs_collect.py 000066
+python stock_full_report.py 000066
 
 # 查看报告
 cd output && python -m http.server 8899
@@ -82,22 +82,22 @@ cd output && python -m http.server 8899
 ## 项目结构
 
 ```
-zbs-stock-research/
+ZBS-Stock-Screener/
 ├── src/                        # 核心模块
 │   ├── __init__.py
-│   ├── data_fetcher.py         # 数据采集（Phase 1模块版）
-│   ├── analyzer.py             # 分析框架配置（Part I-V）
-│   ├── html_renderer.py        # HTML渲染器（Jinja2模板）
+│   ├── data_fetcher.py         # 数据采集模块
+│   ├── analyzer.py             # 分析框架配置
+│   ├── html_renderer.py        # HTML渲染器
 │   └── utils.py                # 工具函数
 ├── shared/                     # 共享模板
-│   ├── template_base.css       # CSS设计系统（v5.0）
-│   └── template_base.js        # 交互逻辑（v5.0）
-├── zbs_collect.py              # 独立数据采集脚本
+│   ├── template_base.css       # CSS设计系统
+│   └── template_base.js        # 交互逻辑
+├── stock_full_report.py        # 数据采集脚本（Phase 1）
 ├── stock_screener.py           # 智能选股系统
 ├── requirements.txt            # 依赖包
 ├── config.yaml                 # 配置文件
 ├── docs/                       # 文档
-├── output/                     # 输出目录
+├── output/                     # 输出目录（已gitignore）
 └── README.md
 ```
 
